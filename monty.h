@@ -23,6 +23,20 @@ typedef struct stack_s
 } stack_t;
 
 /**
+ * struct cmd_s - cmd
+ * @fd: file descriptor
+ * @line: line
+ */
+
+typedef struct cmd_s
+{
+	FILE *fd;
+	char *line;
+} cmd_t;
+
+extern cmd_t cmd;
+extern int value;
+/**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
@@ -49,5 +63,11 @@ void divide(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
-
+void _free(stack_t *stack);
+void clean_stack(stack_t **stack);
+void usage_error(void);
+void open_error(char *file);
+void pushing_error(FILE *fd, char *line, stack_t *stack, int line_number);
+void instruction_error(FILE *fd, char *line, stack_t *stack, char *val, int line_number);
+int get_operation(stack_t **stack, char *arg, char *val, int line_number);
 #endif
