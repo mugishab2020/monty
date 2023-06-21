@@ -6,11 +6,11 @@
  * @av: vector of agruments
  * Return: Nothing
  */
-int main(int ac, int** av)
+int main(int ac, char** av)
 {
 	stack_t *node;
 	FILE *file;
-	unsigned char instruction;
+	char instruction;
 	unsigned int n;
 
 	if (ac != 2)
@@ -20,29 +20,24 @@ int main(int ac, int** av)
 	}
 	
 	file = fopen(av[1], "r");
-	if (file = NULL)
+	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
 	while (fread(&instruction, 1, 1, file) == 1)
 	{
-		if (instruction > 0xFF)
-		{
-			printf("%s: unknown instruction \n", ftell(file) - 1);
-			exit (EXIT_FAILURE);
-		}
 		switch (instruction)
 		{
-			case "push":
+			case 'p':
 				{
 					fread(&n, 1, 1, file);
 					push(&node, n);
 					break;
 				}
-			case "pall":
+			case 'l':
 				{
-					pall(&node);
+					pall(&node, n);
 					break;
 				}
 			default:
