@@ -26,15 +26,18 @@ void push(stack_t **stack, unsigned int line_number)
 		new->next = *stack;
 		(*stack)->prev = new;
 	}
-	*stack = new_node;
+	*stack = new;
 }
 /**
  * pall - prints all the values on the stack from the top of the stack.
  * @stack: the structure of the stack to be printed
  */
-void pall(stack_t *stack)
+void pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *position = *stack;
+	stack_t *position = NULL;
+	(void)line_number;
+
+	position = *stack;
 
 	while (position != NULL)
 	{

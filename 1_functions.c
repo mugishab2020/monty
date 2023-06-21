@@ -6,19 +6,22 @@
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
+	stack_t *poping;
+
 	if (*stack == NULL)
 	{
 
 		fprintf(stderr, "L%u: can't pop an empty stack", line_number);
 		return;
 	}
-	stack_t *poping = *stack;
-	*stack = poping->prev;
-
-	if (*stack != NULL)
-		(*stack)->next = NULL;
-	printf("Popped element: %d\n", poping->n);
-	free(poping);
+	else
+	{
+		poping = (*stack)->next;
+		free(*stack);
+		if (poping)
+			poping->prev = NULL;
+		*stack = poping;
+	}
 }
 /**
  * swap - swaps the top two elements of the stack.
@@ -27,8 +30,8 @@ void pop(stack_t **stack, unsigned int line_number)
  */
 void swap(stack_t **stack, unsigned int line_number)
 {
-	new = *stack;
-	int tempo = 0;
+	stack_t *new = *stack;
+	int temp = 0;
 
 	if (new == NULL || new->next == NULL)
 	{
@@ -36,9 +39,9 @@ void swap(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	tempo = new->n;
+	temp = new->n;
 	new->n = new->next->n;
-	new->next->n = tempo;
+	new->next->n = temp;
 }
 /**
  * add - adds the top two elements of the stack.
@@ -47,9 +50,6 @@ void swap(stack_t **stack, unsigned int line_number)
  */
 void add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new = NULL;
-	int sum = 0;
-
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
