@@ -1,4 +1,6 @@
 #include"monty.h"
+
+int value;
 /**
  * get_operation - gets the opcode function
  * @stack: pointer to the stack or queue
