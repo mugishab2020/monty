@@ -31,11 +31,10 @@ void execute(char *argv)
 				continue;
 			val = strtok(NULL, " \n\t\r");
 			r = get_operation(&stack, token, val, c_line);
-			if (r == 1) /* get_opt return 1 when the value is not digit */
-				pushing_error(cmd.fd, cmd.line, stack, c_line); /** print push error*/
-			else if (r == -1) /* get_opt return -1 if not the instruction */
+			if (r == 1)
+				pushing_error(cmd.fd, cmd.line, stack, c_line);
+			else if (r == -1)
 				instruction_error(cmd.fd, cmd.line, stack, token, c_line);
-					/*print instruction error*/
 		}
 		free(cmd.line);
 		_free(stack);

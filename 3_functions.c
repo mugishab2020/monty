@@ -7,7 +7,7 @@
 void divide(stack_t **stack, unsigned int line_number)
 {
 
-	stack_t *value = NULL;
+	stack_t *my_value = NULL;
 	int quotient = 0;
 
 	if (!*stack || !(*stack)->next)
@@ -25,11 +25,11 @@ void divide(stack_t **stack, unsigned int line_number)
 	}
 
 
-	value = (*stack)->next;
-	quotient= value->n;
+	my_value = (*stack)->next;
+	quotient= my_value->n;
 	quotient /= (*stack)->n;
 	pop(stack, line_number);
-	value->n = quotient;
+	my_value->n = quotient;
 }
 /**
  * mul - function that make the multiplication
@@ -38,7 +38,7 @@ void divide(stack_t **stack, unsigned int line_number)
  */
 void mul(stack_t **stack, unsigned int line_number)
 {
-	stack_t *value = NULL;
+	stack_t *my_value = NULL;
 	int product = 0;
 
 	if (!*stack || !(*stack)->next)
@@ -47,11 +47,11 @@ void mul(stack_t **stack, unsigned int line_number)
 		_free(*stack);
 		exit(EXIT_FAILURE);
 	}
-	value = (*stack)->next;
-	product = value->n;
+	my_value = (*stack)->next;
+	product = my_value->n;
 	product *= (*stack)->n;
 	pop(stack, line_number);
-	value->n = product;
+	my_value->n = product;
 }
 
 /**

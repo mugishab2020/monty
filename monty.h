@@ -30,6 +30,8 @@ typedef struct stack_s
  * @fd: file descriptor
  * @line: line
  */
+extern int value;
+extern int value;
 
 typedef struct cmd_s
 {
@@ -38,7 +40,6 @@ typedef struct cmd_s
 } cmd_t;
 
 extern cmd_t cmd;
-extern int value;
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -74,4 +75,5 @@ void pushing_error(FILE *fd, char *line, stack_t *stack, int line_number);
 void instruction_error(FILE *fd, char *line, stack_t *stack, char *val, int line_number);
 int get_operation(stack_t **stack, char *arg, char *val, int line_number);
 int _isdigit(char *c);
+void execute(char *argv);
 #endif

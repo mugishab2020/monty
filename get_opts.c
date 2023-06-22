@@ -1,4 +1,4 @@
-#include "monty.h"
+#include"monty.h"
 /**
  * get_operation - gets the opcode function
  * @stack: pointer to the stack or queue
@@ -32,13 +32,15 @@ int get_operation(stack_t **stack, char *arg, char *val, int line_number)
 	{
 		if (!strcmp(arg, op[a].opcode))
 		{
-			if (!strcmp(arg, "push"))
+			
+			 if (!strcmp(arg, "push"))
 			{
 				if (_isdigit(val) == 1)
 					value = atoi(val);
 				else
 					return (1);
 			}
+			
 			op[a].f(stack, (unsigned int)line_number);
 			break;
 		}
