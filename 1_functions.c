@@ -50,15 +50,21 @@ void swap(stack_t **stack, unsigned int line_number)
  */
 void add(stack_t **stack, unsigned int line_number)
 {
+	stack_t *new = NULL;
+	int summation = 0;
+
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		_free(*stack);
 		exit(EXIT_FAILURE);
 	}
-
-	(*stack)->next += (*stack)->next->n;
+	new = (*stack)->next;
+	summation = (*stack)->n;
+	summation += (*stack)->next->n;
 	pop(stack, line_number);
+
+	new->n = summation;
 }
 /**
  * npop - function for stoping pop function

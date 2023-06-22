@@ -1,5 +1,8 @@
 #include "monty.h"
 /**
+ * sub- function too make the subtraction
+ * @stack: the stack to be dealing with
+ * @line_number: line for checking if errror happens
  */
 void sub(stack_t **stack, unsigned int line_number)
 {

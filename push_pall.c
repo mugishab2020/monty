@@ -1,4 +1,28 @@
 #include "monty.h"
+int value;
+
+/**
+ * createNode - function fot creating a new node
+ * @n: the value of the node
+ * Return: new node
+ */
+
+stack_t *createNode(int n)
+{
+        stack_t *new = NULL;
+
+        new = malloc(sizeof(stack_t));
+        if (new == NULL)
+        {
+                fprintf(stderr, "Error: malloc failed\n");
+                exit(EXIT_FAILURE);
+        }
+        new->n = n;
+        new->next = NULL;
+        new->prev = NULL;
+
+        return (new);
+}
 /**
  * push - pushes an element to the stack
  * @stack: the stack structure to push in
@@ -6,27 +30,16 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new = malloc(sizeof(stack_t));
+	stack_t *new = NULL;
+	(void)line_number;
 
-	if (new == NULL)
-	{
-		fprintf(stderr, "Error: Memory allocation failed\n");
-		exit(EXIT_FAILURE);
-	}
+	new = createNode(value);
 
-	new->n = line_number;
-	new->prev = NULL;
-
-	if (*stack == NULL)
-	{
-		new->next = NULL;
-	}
-	else
-	{
-		new->next = *stack;
+	new->next = *stack;
+	if (*stack != NULL)
 		(*stack)->prev = new;
-	}
 	*stack = new;
+
 }
 /**
  * pall - prints all the values on the stack from the top of the stack.
