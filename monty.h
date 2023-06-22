@@ -1,11 +1,14 @@
 #ifndef _MONTY_
 #define _MONTY_
 
+#define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
 #include <string.h>
+
+extern int info;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -70,4 +73,5 @@ void open_error(char *file);
 void pushing_error(FILE *fd, char *line, stack_t *stack, int line_number);
 void instruction_error(FILE *fd, char *line, stack_t *stack, char *val, int line_number);
 int get_operation(stack_t **stack, char *arg, char *val, int line_number);
+int _isdigit(char *c);
 #endif
