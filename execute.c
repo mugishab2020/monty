@@ -4,7 +4,7 @@
 cmd_t cmd = {NULL, NULL};
 
 /**
- *execute - reads the file and executes the monty byte
+ *execute -functionn that reads the file and executes the monty byte
  *@argv: argument vector
  */
 

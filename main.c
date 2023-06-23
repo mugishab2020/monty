@@ -1,7 +1,6 @@
 #include "monty.h"
-
 /**
- * main - Entry point of our program
+ * main - This is the main functiono f our program
  * @ac: number of arguments
  * @av: vector of agruments
  * Return: Nothing
